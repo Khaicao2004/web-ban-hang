@@ -1,0 +1,55 @@
+/* Tạo khung viền bao quanh từng biến thể */
+.variant-row {
+    border: 1px solid #007bff; /* Viền màu xanh dương */
+    border-radius: 8px; /* Bo tròn góc */
+    padding: 15px; /* Khoảng cách bên trong */
+    margin-bottom: 15px; /* Khoảng cách giữa các biến thể */
+    background-color: #f8f9fa; /* Nền màu xám nhạt */
+}
+
+/* Đổi màu nền khi di chuột vào */
+.variant-row:hover {
+    background-color: #e2e6ea; /* Nền màu xám đậm hơn khi di chuột vào */
+}
+
+/* Tạo màu nền khác nhau cho các biến thể */
+.variant-row:nth-child(odd) {
+    background-color: #ffffff; /* Nền màu trắng cho các biến thể lẻ */
+}
+
+.variant-row:nth-child(even) {
+    background-color: #f1f1f1; /* Nền màu xám nhạt cho các biến thể chẵn */
+}
+
+/* Đổi màu nút */
+.variant-row .btn {
+    background-color: #007bff; /* Màu nền xanh dương */
+    color: #ffffff; /* Màu chữ trắng */
+    border: none; /* Không viền */
+}
+
+.variant-row .btn:hover {
+    background-color: #0056b3; /* Màu xanh dương đậm hơn khi di chuột vào */
+}
+
+/* Đổi màu và kiểu chữ cho nhãn */
+.variant-row label {
+    font-weight: bold; /* Kiểu chữ đậm */
+    color: #333333; /* Màu chữ đen đậm */
+}
+
+/* Điều chỉnh khoảng cách giữa các ô input */
+
+
+/* Điều chỉnh kiểu cho dropdown select */
+.variant-row .form-select {
+    border-radius: 4px; /* Bo tròn góc cho dropdown */
+    padding: 5px; /* Khoảng cách bên trong */
+    border: 1px solid #ced4da; /* Viền màu xám */
+}
+
+/* Điều chỉnh kiểu cho các thông báo lỗi */
+.variant-row .invalid-feedback {
+    font-size: 0.9em; /* Kích thước chữ nhỏ hơn một chút */
+    color: #dc3545; /* Màu đỏ cho thông báo lỗi */
+}

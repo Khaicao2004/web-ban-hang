@@ -1,0 +1,9 @@
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="/client/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/client/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/client/css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="/client/css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="/client/css/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="/client/css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="/client/css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="/client/css/style.css" type="text/css">
