@@ -26,6 +26,8 @@ Route::get('shop-details/{slug}',[ProductController::class, 'productDetails'])->
 Route::get('auth/login', [AuthenticationController::class, 'showFormLogin'])->name('auth.login');
 Route::post('auth/login', [AuthenticationController::class, 'login']);
 
+Route::get('auth/register', [AuthenticationController::class, 'showFormRegister'])->name('auth.register');
+Route::post('auth/register', [AuthenticationController::class, 'register']);
 
 Route::post('auth/logout', [AuthenticationController::class , 'logout'])->name('auth.logout');
 

@@ -89,7 +89,7 @@
                                 <i class="fa fa-star-o"></i>
                                 <span> - 5 Reviews</span>
                             </div>
-                            @if ($product->price_sale)
+                            @if ($product->price_sale != 0)
                                 <h3>{{ number_format($product->price_sale, 0, ',', '.') }}₫
                                     <span>{{ number_format($product->price_regular, 0, ',', '.') }}₫</span>
                                 </h3>

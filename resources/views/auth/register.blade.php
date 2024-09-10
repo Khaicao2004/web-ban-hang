@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable">
 
 <head>
 
@@ -32,7 +33,8 @@
             <div class="bg-overlay"></div>
 
             <div class="shape">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 120">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 1440 120">
                     <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
                 </svg>
             </div>
@@ -65,44 +67,95 @@
                                     <p class="text-muted">Get your free velzon account now</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form class="needs-validation" novalidate action="index.html">
-
+                                    <form class="needs-validation" novalidate action="{{ route('auth.register') }}"
+                                        method="POST">
+                                        @csrf
                                         <div class="mb-3">
-                                            <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" id="useremail" placeholder="Enter email address" required>
+                                            <label for="useremail" class="form-label">Email <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="useremail"
+                                                placeholder="Enter email address" name="email" required>
                                             <div class="invalid-feedback">
                                                 Please enter email
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                                            <label for="username" class="form-label">Username <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="username"
+                                                placeholder="Enter username" name="name" required>
                                             <div class="invalid-feedback">
                                                 Please enter username
                                             </div>
                                         </div>
 
                                         <div class="mb-3">
+                                            <label for="phone" class="form-label">Phone <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="phone"
+                                                placeholder="Enter phone" name="phone" required>
+                                            <div class="invalid-feedback">
+                                                Please enter phone
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Address <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="address"
+                                                placeholder="Enter Address" name="address" required>
+                                            <div class="invalid-feedback">
+                                                Please enter Address
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
                                             <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup">
-                                                <input type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                <input type="password" class="form-control pe-5 password-input"
+                                                    name="password" onpaste="return false" placeholder="Enter password"
+                                                    id="password-input" aria-describedby="passwordInput"
+                                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                                <button
+                                                    class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                    type="button" id="password-addon"><i
+                                                        class="ri-eye-fill align-middle"></i></button>
                                                 <div class="invalid-feedback">
                                                     Please enter password
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div class="mb-3">
+                                            <label class="form-label" for="password-input">Confirm Password</label>
+                                            <div class="position-relative auth-pass-inputgroup">
+                                                <input type="password" class="form-control pe-5 password-input"
+                                                    name="password_confirmation" placeholder="Enter repassword"
+                                                    required>
+                                                <button
+                                                    class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                    type="button" id="password-addon"><i
+                                                        class="ri-eye-fill align-middle"></i></button>
+                                                <div class="invalid-feedback">
+                                                    Please enter repassword
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="mb-4">
-                                            <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the Velzon <a href="#" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
+                                            <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the
+                                                Velzon <a href="#"
+                                                    class="text-primary text-decoration-underline fst-normal fw-medium">Terms
+                                                    of Use</a></p>
                                         </div>
 
                                         <div id="password-contain" class="p-3 bg-light mb-2 rounded">
                                             <h5 class="fs-13">Password must contain:</h5>
-                                            <p id="pass-length" class="invalid fs-12 mb-2">Minimum <b>8 characters</b></p>
-                                            <p id="pass-lower" class="invalid fs-12 mb-2">At <b>lowercase</b> letter (a-z)</p>
-                                            <p id="pass-upper" class="invalid fs-12 mb-2">At least <b>uppercase</b> letter (A-Z)</p>
-                                            <p id="pass-number" class="invalid fs-12 mb-0">A least <b>number</b> (0-9)</p>
+                                            <p id="pass-length" class="invalid fs-12 mb-2">Nhỏ nhất <b>8 ký tự</b></p>
+                                            <p id="pass-lower" class="invalid fs-12 mb-2">Các ký tự <b>ký tự
+                                                    thường</b> nằm trong (a-z)</p>
+                                            <p id="pass-upper" class="invalid fs-12 mb-2">Ít nhất phải có <b>1 ký tự
+                                                    in hoa</b> nằm trong (A-Z)</p>
+                                            <p id="pass-number" class="invalid fs-12 mb-0">Ít nhất có<b> 1 số</b>
+                                                (0-9)</p>
                                         </div>
 
                                         <div class="mt-4">
@@ -115,10 +168,18 @@
                                             </div>
 
                                             <div>
-                                                <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>
-                                                <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></button>
-                                                <button type="button" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></button>
-                                                <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
+                                                <button type="button"
+                                                    class="btn btn-primary btn-icon waves-effect waves-light"><i
+                                                        class="ri-facebook-fill fs-16"></i></button>
+                                                <button type="button"
+                                                    class="btn btn-danger btn-icon waves-effect waves-light"><i
+                                                        class="ri-google-fill fs-16"></i></button>
+                                                <button type="button"
+                                                    class="btn btn-dark btn-icon waves-effect waves-light"><i
+                                                        class="ri-github-fill fs-16"></i></button>
+                                                <button type="button"
+                                                    class="btn btn-info btn-icon waves-effect waves-light"><i
+                                                        class="ri-twitter-fill fs-16"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -130,7 +191,8 @@
                         <!-- end card -->
 
                         <div class="mt-4 text-center">
-                            <p class="mb-0">Already have an account ? <a href="auth-signin-basic.html" class="fw-semibold text-primary text-decoration-underline"> Signin </a> </p>
+                            <p class="mb-0">Already have an account ? <a href="auth-signin-basic.html"
+                                    class="fw-semibold text-primary text-decoration-underline"> Signin </a> </p>
                         </div>
 
                     </div>
@@ -148,7 +210,10 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i>
+                                by Themesbrand
                             </p>
                         </div>
                     </div>

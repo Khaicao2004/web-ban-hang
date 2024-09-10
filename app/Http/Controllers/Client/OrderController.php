@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\AttributeValue;
+use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderItemAttribute;
@@ -93,6 +94,14 @@ class OrderController extends Controller
                         'attribute_value_name' => $attributeValue ? $attributeValue->name : 'Not Found'
                      ]);
                   }
+               }
+               $inventory = Inventory::where('product_variant_id',$item['product_variant_id'])
+               ->first();
+               if($inventory){
+                  $newQuantity = $inventory->quantity - $item['quantity'];
+                  $inventory->update([
+                     'quantity' => $newQuantity
+                  ]);
                }
             }
          });

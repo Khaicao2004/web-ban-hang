@@ -129,7 +129,7 @@
                         <!-- end card -->
 
                         <div class="mt-4 text-center">
-                            <p class="mb-0">Don't have an account ? <a href="auth-signup-basic.html"
+                            <p class="mb-0">Don't have an account ? <a href="{{ route('auth.register') }}"
                                     class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
                         </div>
 

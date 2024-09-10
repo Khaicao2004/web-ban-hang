@@ -63,7 +63,13 @@
                                             </div>
                                         @endforeach
                                     </td>
-                                    <td>{{ $item->productVariant->quantity }}</td>
+                                    <td>
+                                        @if ($item->quantity != 0)
+                                        {{ $item->quantity }}             
+                                        @else
+                                            <span class="badge bg-danger">Hết hàng</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->updated_at }}</td>
                                     <td>
