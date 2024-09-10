@@ -24,13 +24,13 @@
             <div class="row product__filter">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="/client/img/product/product-1.jpg">
+                        <div class="product__item__pic set-bg" data-setbg="/theme/client/img/product/product-1.jpg">
                             <span class="label">New</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="/client/img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="/client/img/icon/compare.png" alt="">
+                                <li><a href="#"><img src="/theme/client/img/icon/heart.png" alt=""></a></li>
+                                <li><a href="#"><img src="/theme/client/img/icon/compare.png" alt="">
                                         <span>Compare</span></a></li>
-                                <li><a href="#"><img src="/client/img/icon/search.png" alt=""></a></li>
+                                <li><a href="#"><img src="/theme/client/img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -68,12 +68,12 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="{{ $url }}">
-                                <span class="label">Sale</span>
+                                <span class="label">Hot</span>
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="/client/img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="/client/img/icon/compare.png" alt="">
+                                    <li><a href="#"><img src="/theme/client/img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="/theme/client/img/icon/compare.png" alt="">
                                             <span>Compare</span></a></li>
-                                    <li><a href="#"><img src="/client/img/icon/search.png" alt=""></a></li>
+                                    <li><a href="#"><img src="/theme/client/img/icon/search.png" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -86,7 +86,7 @@
                                     <i class="fa fa-star-o"></i>
                                     <i class="fa fa-star-o"></i>
                                 </div>
-                                @if ($item->price_sale)
+                                @if ($item->price_sale != 0)
                                     <h5>{{ number_format($item->price_sale, 0, ',', '.') }}₫</h5>
                                 @else
                                     <h5>{{ number_format($item->price_regular, 0, ',', '.') }}₫</h5>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="categories__hot__deal">
-                        <img src="/client/img/product-sale.png" alt="">
+                        <img src="/theme/client/img/product-sale.png" alt="">
                         <div class="hot__deal__sticker">
                             <span>Sale Of</span>
                             <h5>$29.99</h5>

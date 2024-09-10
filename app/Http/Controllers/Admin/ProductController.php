@@ -55,9 +55,10 @@ class ProductController extends Controller
             // dd($request->all());
             $dataProduct = $request->except(['image', 'variants', 'product_galleries', 'tags']);
             $dataProduct['is_active'] = isset($dataProduct['is_active']) ? 1 : 0;
-            $dataProduct['is_hot_deal'] = isset($dataProduct['is_active']) ? 1 : 0;
-            $dataProduct['is_new'] = isset($dataProduct['is_active']) ? 1 : 0;
-            $dataProduct['is_show_home'] = isset($dataProduct['is_active']) ? 1 : 0;
+            $dataProduct['is_hot_deal'] = isset($dataProduct['is_hot_deal']) ? 1 : 0;
+            $dataProduct['is_new'] = isset($dataProduct['is_new']) ? 1 : 0;
+            $dataProduct['is_sale'] = isset($dataProduct['is_sale']) ? 1 : 0;
+            $dataProduct['is_show_home'] = isset($dataProduct['is_show_home']) ? 1 : 0;
             $dataProduct['slug'] = Str::slug($dataProduct['name']) . '-' . $dataProduct['sku'];
 
             if ($request->hasFile('image')) {

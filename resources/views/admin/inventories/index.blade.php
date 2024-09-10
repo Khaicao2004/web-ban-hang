@@ -32,7 +32,6 @@
                     <h5 class="card-title mb-0">
                         Danh sách
                     </h5>
-                    <a href="{{ route('admin.attributes.create') }}" class="btn btn-primary mb-3">Thêm mới</a>
                 </div>
                 <div class="card-body">
                     <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle"

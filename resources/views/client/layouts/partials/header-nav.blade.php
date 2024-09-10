@@ -9,14 +9,12 @@
             <nav class="header__menu mobile-menu">
                 <ul>
                     <li class="active"><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="">Shop</a></li>
-                    <li><a href="#">Pages</a>
+                    {{-- <li><a href="">Shop</a></li> --}}
+                    <li><a href="#">Danh muc</a>
                         <ul class="dropdown">
-                            <li><a href="">About Us</a></li>
-                            <li><a href="">Shop Details</a></li>
-                            <li><a href="">Shopping Cart</a></li>
-                            <li><a href="">Check Out</a></li>
-                            <li><a href="">Blog Details</a></li>
+                            @foreach ($catalogues as $catalogue)
+                            <li><a href="{{ route('shop',$catalogue->slug) }}">{{$catalogue->name}}</a></li>    
+                            @endforeach
                         </ul>
                     </li>
                     <li><a href="">Blog</a></li>
@@ -29,8 +27,8 @@
                 <button class="search-switch btn btn-secondery"><img src="/client/img/icon/search.png"
                         alt=""></button>
                 <a href="#"><img src="/client/img/icon/heart.png" alt=""></a>
-                <a href="{{ route('cart.list') }}"><img src="/client/img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="price">$0.00</div>
+                <a href="{{ route('cart.list') }}"><img src="/client/img/icon/cart.png" alt=""> <span>{{count(session('cart', []))}}</span></a>
+                <div class="price">{{ number_format($totalAmount, 0, ',', '.') }} VNĐ</div>
             </div>
         </div>
     </div>

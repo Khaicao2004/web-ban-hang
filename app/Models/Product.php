@@ -24,12 +24,14 @@ class Product extends Model
         'is_active',
         'is_hot_deal',
         'is_new',
+        'is_sale',
         'is_show_home',
     ];
     protected $casts = [
         'is_active' => 'boolean',
         'is_hot_deal' => 'boolean',
         'is_new' => 'boolean',
+        'is_sale' => 'boolean',
         'is_show_home' => 'boolean',
     ];
     public function catalogue()

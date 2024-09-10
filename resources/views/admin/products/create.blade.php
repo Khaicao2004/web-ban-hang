@@ -108,6 +108,13 @@
                                                 <label class="form-check-label" for="is_new">Is New</label>
                                             </div>
                                         </div>
+                                        <div class="col-md-2">
+                                            <div class="form-check form-switch form-switch-info">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                    name="is_sale" id="is_sale" checked>
+                                                <label class="form-check-label" for="is_sale">Is Sale</label>
+                                            </div>
+                                        </div>
                                         <div class="col-md-3">
                                             <div class="form-check form-switch form-switch-info">
                                                 <input class="form-check-input" type="checkbox" role="switch"
@@ -165,7 +172,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                    
+
                                         <div class="col-md-2">
                                             <label for="attribute_value_id" class="form-label">Giá trị</label>
                                             <select name="variants[0][attribute_values][]" class="form-select select2">
@@ -175,40 +182,42 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        
+
                                         <div class="col-md-2">
                                             <label for="quantity" class="form-label">Số lượng</label>
                                             <input type="number" name="variants[0][quantity]" class="form-control">
                                         </div>
-                    
+
                                         <div class="col-md-2">
                                             <label for="price" class="form-label">Giá</label>
                                             <input type="number" name="variants[0][price]" class="form-control">
                                         </div>
-                    
+
                                         <div class="col-md-2">
                                             <label for="image" class="form-label">Ảnh</label>
                                             <input type="file" name="variants[0][image]" class="form-control">
                                         </div>
-                    
+
                                         <div class="col-md-1 d-flex align-items-end mt-1">
                                             <button type="button" class="btn btn-danger btn-remove-variant">Xóa</button>
                                         </div>
-                    
+
                                         <!-- Khu vực thuộc tính -->
                                         <div class="col-md-12 attributes-container mt-2">
                                             <!-- Thuộc tính mặc định sẽ được thêm vào đây -->
                                         </div>
-                    
+
                                         <!-- Nút thêm thuộc tính -->
                                         <div class="col-md-12 mt-2">
-                                            <button type="button" class="btn btn-primary btn-add-attribute">Thêm thuộc tính</button>
+                                            <button type="button" class="btn btn-primary btn-add-attribute">Thêm thuộc
+                                                tính</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
-                                    <button type="button" id="btn-add-variant" class="btn btn-success">Thêm biến thể</button>
-                                   </div>
+                                    <button type="button" id="btn-add-variant" class="btn btn-success">Thêm biến
+                                        thể</button>
+                                </div>
                             </div>
                             <!--end row-->
                         </div>
@@ -250,7 +259,7 @@
                                 <div class="col-md-12">
                                     <div>
                                         <label for="tags" class="form-label">Tags </label>
-                                        <select name="tags[]" id="tags" class="form-control" multiple>
+                                        <select name="tags[]" id="tags" class="form-control select2" multiple>
                                             @foreach ($tags as $id => $name)
                                                 <option value="{{ $id }}">{{ $name }}</option>
                                             @endforeach
@@ -278,13 +287,12 @@
     </form>
 @endsection
 @section('style-libs')
-   <!-- CSS của Select2 -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="/library/main.css">
-
+    <!-- CSS của Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/library/main.css">
 @endsection
 @section('script-libs')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https:////cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
     <script src="/library/main.js"></script>
 @endsection
@@ -294,5 +302,11 @@
         CKEDITOR.replace('content');
         const attributes = @json($attributes);
         const attributeValues = @json($attributeValues);
+        $(document).ready(function() {
+            $(".select2").select2({
+                allowClear: true,
+                dropdownAutoWidth: true
+            });
+        });
     </script>
 @endsection

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
   public function list(){
+    // session()->forget('cart');
     if(session()->has('cart')){
       $cart = session('cart');
     }else{

@@ -48,6 +48,7 @@
                                 <th>Is Active</th>
                                 <th>Is Hot Deal</th>
                                 <th>Is New</th>
+                                <th>Is Sale</th>
                                 <th>Is Show Home</th>
                                 <th>Tags</th>
                                 <th>Created at</th>
@@ -77,6 +78,7 @@
                                     <td>{!! $item->is_active ? '<span class="badge bg-primary">YES</span>' : '<span class="badge bg-danger">NO</span>' !!}</td>
                                     <td>{!! $item->is_hot_deal ? '<span class="badge bg-primary">YES</span>' : '<span class="badge bg-danger">NO</span>' !!}</td>
                                     <td>{!! $item->is_new ? '<span class="badge bg-primary">YES</span>' : '<span class="badge bg-danger">NO</span>' !!}</td>
+                                    <td>{!! $item->is_sale ? '<span class="badge bg-primary">YES</span>' : '<span class="badge bg-danger">NO</span>' !!}</td>
                                     <td>{!! $item->is_show_home
                                         ? '<span class="badge bg-primary">YES</span>'
                                         : '<span class="badge bg-danger">NO</span>' !!}</td>
