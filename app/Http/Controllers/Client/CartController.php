@@ -69,7 +69,7 @@ class CartController extends Controller
       if ($inventory && $inventory->quantity < $quantity) {
         return back()->with([
           'alert-type' => 'error',
-          'alert-message' => 'Sản phẩm đã hết hàng.'
+          'alert-message' => 'Số lượng sản phẩm không đủ hoặc đã hết hàng.'
         ]);
       }
       $cart = session()->get('cart', []);

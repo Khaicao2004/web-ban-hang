@@ -24,10 +24,10 @@
         </div>
         <div class="col-lg-3 col-md-3">
             <div class="header__nav__option">
-                <button class="search-switch btn btn-secondery"><img src="/client/img/icon/search.png"
+                <button class="search-switch btn btn-secondery"><img src="/theme/client/img/icon/search.png"
                         alt=""></button>
-                <a href="#"><img src="/client/img/icon/heart.png" alt=""></a>
-                <a href="{{ route('cart.list') }}"><img src="/client/img/icon/cart.png" alt=""> <span>{{count(session('cart', []))}}</span></a>
+                <a href="#"><img src="/theme/client/img/icon/heart.png" alt=""></a>
+                <a href="{{ route('cart.list') }}"><img src="/theme/client/img/icon/cart.png" alt=""> <span>{{count(session('cart', []))}}</span></a>
                 <div class="price">{{ number_format($totalAmount, 0, ',', '.') }} VNĐ</div>
             </div>
         </div>

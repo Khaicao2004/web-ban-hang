@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\Catalogue;
 use App\Models\Product;
+use App\Models\ProductGallery;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,6 +20,9 @@ class ProductController extends Controller
     public function productDetails($slug)
     {
         $product = Product::with(['productVariants', 'productVariants.attributes', 'productVariants.attributeValues'])->where('slug', $slug)->first();
+        $galleries = ProductGallery::query()->where('product_id', $product->id)
+        ->pluck('image', 'id');
+        // dd($galleries);
         $groupedAttributes = [];
         foreach ($product->productVariants as $variant) {
             foreach ($variant->attributes as $attribute) {
@@ -27,7 +31,7 @@ class ProductController extends Controller
         }
         // dd($groupedAttributes);
 
-        return view('client.shop-details', compact('product', 'groupedAttributes'));
+        return view('client.shop-details', compact('product', 'groupedAttributes', 'galleries'));
     }
 
     public function shop($slug){
