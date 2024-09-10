@@ -59,12 +59,12 @@
         @include('client.layouts.partials.header-nav')
 
     </header>
-   
+
     @yield('content')
 
     <!-- Footer Section Begin -->
     <footer class="footer">
-    @include('client.layouts.partials.footer')
+        @include('client.layouts.partials.footer')
 
     </footer>
     <!-- Footer Section End -->
@@ -82,6 +82,7 @@
 
     @include('client.layouts.partials.js')
     
+
 </body>
 
 </html>
