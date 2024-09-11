@@ -42,7 +42,7 @@
                                 <th>Tên kho</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Biến thể sản phẩm</th>
-                                <th>Số lượng</th>
+                                <th>Số lượng còn lại</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
                                 <th>Action</th>
