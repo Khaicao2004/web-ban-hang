@@ -51,8 +51,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         try {
-            DB::beginTransaction();
             // dd($request->all());
+            DB::beginTransaction();
             $dataProduct = $request->except(['image', 'variants', 'product_galleries', 'tags']);
             $dataProduct['is_active'] = isset($dataProduct['is_active']) ? 1 : 0;
             $dataProduct['is_hot_deal'] = isset($dataProduct['is_hot_deal']) ? 1 : 0;
@@ -100,11 +100,12 @@ class ProductController extends Controller
                     'quantity' => $variantData['quantity']
                 ]);
             }
-
-            foreach ($request->product_galleries as $image) {
-                $product->galleries()->create([
-                    'image' => Storage::put('galleries', $image)
-                ]);
+            if ($request->has('product_galleries')) {
+                foreach ($request->product_galleries as $image) {
+                    $product->galleries()->create([
+                        'image' => Storage::put('galleries', $image)
+                    ]);
+                }
             }
             $product->tags()->sync($request->tags);
             DB::commit();
@@ -129,7 +130,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $catalogues = Catalogue::query()->pluck('name', 'id');
+        $galleries = ProductGallery::where('product_id', $product->id)->get();
+        $tags = Tag::query()->pluck('name', 'id');
+        $attributes = Attribute::query()->pluck('name', 'id');
+        $attributeValues = AttributeValue::query()->pluck('name', 'id');
+        $wareHouses = WareHouse::query()->pluck('name', 'id');
+        return view(self::PATH_VIEW . __FUNCTION__, compact('catalogues', 'tags', 'galleries', 'attributes', 'attributeValues', 'wareHouses', 'product'));
     }
 
     /**
@@ -137,7 +144,84 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // dd($request->all());
+        try {
+            DB::beginTransaction();
+            $dataProduct = $request->except(['image', 'variants', 'product_galleries', 'tags']);
+            $dataProduct['is_active'] = isset($dataProduct['is_active']) ? 1 : 0;
+            $dataProduct['is_hot_deal'] = isset($dataProduct['is_hot_deal']) ? 1 : 0;
+            $dataProduct['is_new'] = isset($dataProduct['is_new']) ? 1 : 0;
+            $dataProduct['is_sale'] = isset($dataProduct['is_sale']) ? 1 : 0;
+            $dataProduct['is_show_home'] = isset($dataProduct['is_show_home']) ? 1 : 0;
+
+            if ($request->hasFile('image')) {
+                $dataProduct['image'] = Storage::put(self::PATH_UPLOAD, $request->file('image'));
+            }
+            $currentImage = $product->image;
+            $product->update($dataProduct);
+            if ($request->hasFile('image') && Storage::exists($currentImage)) {
+                Storage::delete($currentImage);
+            }
+            // $wareHouseId = $request->input('ware_house_id');
+            // // biến thể
+            // // dd($request->variants);
+            // foreach ($request->variants as $variantData) {
+            //     // Tạo mới biến thể
+            //     // if ($variantData['image']) {
+            //     //     $variantData['image'] = Storage::put('variants', $variantData['image']);
+            //     // }
+            //     $image = $variantData['image'] ?? null;
+            //     if ($image) {
+            //         $image = Storage::put('variants', $image);
+            //     }
+            //     $productVariant = $product->productVariants()->create([
+            //         'price' => $variantData['price'],
+            //         'quantity' => $variantData['quantity'],
+            //         'image' => $image ?? $product->image,
+            //     ]);
+            //     if ($variantData['attributes'] && $variantData['attribute_values']) {
+            //         $attributes = [];
+            //         foreach ($variantData['attributes'] as $key => $attributeId) {
+            //             $attributeValueId = $variantData['attribute_values'][$key];
+            //             if ($attributeValueId) {
+            //                 $attributes[$attributeId] = ['attribute_value_id' => $attributeValueId];
+            //             }
+            //         }
+            //         $productVariant->attributes()->sync($attributes);
+            //     }
+            //     Inventory::query()->create([
+            //         'ware_house_id' => $wareHouseId,
+            //         'product_id' => $product->id,
+            //         'product_variant_id' => $productVariant->id,
+            //         'quantity' => $variantData['quantity']
+            //     ]);
+            // }
+            if ($request->has('delete_galleries')) {
+                foreach ($request->delete_galleries as $galleryId) {
+                    $gallery = ProductGallery::find($galleryId);
+                    if ($gallery) {
+                        // xoa anh khoi storage
+                        Storage::delete($gallery->image);
+                        // xoa khoi CSDL
+                        $gallery->delete();
+                    }
+                }
+            }
+            if ($request->hasFile('product_galleries')) {
+                foreach ($request->product_galleries as $image) {
+                    $product->galleries()->create([
+                        'image' => Storage::put('galleries', $image)
+                    ]);
+                }
+            }
+            $product->tags()->sync($request->tags);
+            DB::commit();
+            return back()->with('success', 'Cập nhật sản phẩm thành công');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            Log::error('Lỗi thêm sản phẩm ' . $exception->getMessage());
+            return back()->with('success', 'Lỗi cập nhật sản phẩm');
+        }
     }
 
     /**

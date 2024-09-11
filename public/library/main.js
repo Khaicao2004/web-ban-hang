@@ -144,3 +144,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 });
+
+$(document).on('click', '.delete-gallery', function(){
+    var galleryId = $(this).data('id');
+    // Thêm input hidden để lưu ID của ảnh sẽ bị xóa
+    $('form').append('<input type="hidden" name="delete_galleries[]" value="' + galleryId + '">');
+    // Ẩn ảnh khỏi giao diện
+    $('#gallery-' + galleryId).remove();
+});
